@@ -41,6 +41,16 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ContactUs.Models\ContactUs.Models.csproj">
+      <Project>{22f0d378-8392-46af-a2a1-4aff07ce73db}</Project>
+      <Name>ContactUs.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GFX.core\GFX.core.csproj">
+      <Project>{c2993a15-0c47-40b9-beee-8243bef37e47}</Project>
+      <Name>GFX.core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
