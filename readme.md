@@ -1,3 +1,4 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/asrt36iixn2mh01u?svg=true)](https://ci.appveyor.com/project/pongpob/contactus)
 ## ContactUs
 
 The contactus system allows users to post message to 
