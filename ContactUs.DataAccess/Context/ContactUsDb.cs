@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using GFX.Core;
+using System.Data.Entity;
 using ContactUs.Models;
 
-namespace ContactUs.DataAccess
+namespace ContactUs.DataAccess.Context
 {
-    public class TicketRepository: RepositoryBase<Ticket>
+    public class ContactUsDb: DbContext
     {
+        public DbSet<Ticket> Tickets { get; set; }
     }
 }
