@@ -32,8 +32,8 @@ namespace ContactUs.Web.Controllers
             if (ModelState.IsValid)
             {
                 var t = new Ticket();
-                t.Title = "Test Ticket";
-                t.Body = "Blah blah";
+                t.Title = item.Title;
+                t.Body = item.Body;
                 t.LastActivityDate = DateTime.Now;
 
                 app.Tickets.Add(t);
@@ -63,6 +63,30 @@ namespace ContactUs.Web.Controllers
 
             var tickets = q.ToList();
             return View(tickets);
+        }
+
+        [HttpPost]
+        public ActionResult ChangeStatus(string id, string toStatus)
+        {
+            var ticket = app.Tickets.Find(id);
+            if (ticket == null)
+            {
+                return HttpNotFound();
+            }
+            if (toStatus == "Accepted")
+            {
+                ticket.Accept();
+            }
+            else if (toStatus == "Closed")
+            {
+                ticket.Close();
+            }
+            else if (toStatus == "Rejected")
+            {
+                ticket.Reject("N/A");
+            }
+            app.SaveChanges();
+            return RedirectToAction("Browse");
         }
     }
 }

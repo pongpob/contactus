@@ -33,8 +33,8 @@ namespace ContactUs.Models {
     public Ticket() {
       TicketStates = new HashSet<TicketState>();
 
-      var t = new NewTicketState(this);
-      TicketStates.Add(t); 
+      //var t = new NewTicketState(this);
+      //TicketStates.Add(t); 
     }
 
     internal void ChangeStatus(TicketState state) {
@@ -58,14 +58,28 @@ namespace ContactUs.Models {
     }
 
     public void Accept() {
+        if (!this.IsAcceptable)
+        {
+            throw new InvalidOperationException();
+        }
       ChangeStatus(new AcceptedTicketState(this));
     }
 
     public void Close() {
+        if (!this.IsCloseable)
+        {
+            throw new InvalidOperationException();
+        }
       ChangeStatus(new ClosedTicketState(this));
     }
-    public void Reject() {
-      ChangeStatus(new RejectedTicketState(this));
+    public void Reject(string reason) {
+        if (!this.IsRejectable)
+        {
+            throw new InvalidOperationException();
+        }
+        var s = new RejectedTicketState(this);
+        s.Reason = reason;
+      ChangeStatus(s);
     }
 
   }
