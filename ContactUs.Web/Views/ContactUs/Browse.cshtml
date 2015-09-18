@@ -23,7 +23,21 @@
             <td>@t.Title</td>
             <td>@t.LastActivityDate</td>
             <td>@t.Status</td>
-            <td></td>
+            <td>
+                @*@if (t.AbleToChangeStatus(TicketStatus.Accepted))
+                {
+                    <button class="btn btn-success">Accept</button>
+                }
+                @if (t.AbleToChangeStatus(TicketStatus.Rejected))
+                {
+                    <button class="btn btn-danger">Reject</button>
+                }
+                @if (t.AbleToChangeStatus(TicketStatus.Closed))
+                {
+                    <button class="btn btn-info">Close</button>
+                }*@
+            </td>
+
         </tr>
         }
     </tbody>
